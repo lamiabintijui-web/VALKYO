@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMIÈRE — Luxury Beauty E-Commerce</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">LUMIÈRE</div>
+      <div class="loader-tagline">Luxury Beauty</div>
+      <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+      <div class="loader-percent" id="loaderPercent">0%</div>
+    </div>
+  </div>
+
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="ann-track">
+      <span>✦ Free shipping on orders over $75 &nbsp;&nbsp;</span>
+      <span>✦ New: Rose Elixir Collection is live &nbsp;&nbsp;</span>
+      <span>✦ Members get 15% off — <a href="#">Join now</a> &nbsp;&nbsp;</span>
+      <span>✦ Free shipping on orders over $75 &nbsp;&nbsp;</span>
+      <span>✦ New: Rose Elixir Collection is live &nbsp;&nbsp;</span>
+      <span>✦ Members get 15% off — <a href="#">Join now</a> &nbsp;&nbsp;</span>
+    </div>
+    <button class="ann-close" id="annClose">✕</button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-left">
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="has-mega">
+          <a href="#shop">Shop <span class="chevron">›</span></a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <h6>By Category</h6>
+              <a href="#shop" data-cat="skincare">Skincare</a>
+              <a href="#shop" data-cat="lips">Lips</a>
+              <a href="#shop" data-cat="eyes">Eyes</a>
+              <a href="#shop" data-cat="body">Body</a>
+              <a href="#shop" data-cat="fragrance">Fragrance</a>
+            </div>
+            <div class="mega-col">
+              <h6>By Need</h6>
+              <a href="#shop">Anti-Aging</a>
+              <a href="#shop">Hydration</a>
+              <a href="#shop">Brightening</a>
+              <a href="#shop">Sensitive Skin</a>
+            </div>
+            <div class="mega-col">
+              <h6>Collections</h6>
+              <a href="#shop">Rose Elixir ✦ New</a>
+              <a href="#shop">Gold Ritual</a>
+              <a href="#shop">Botanic Glow</a>
+              <a href="#shop">Gift Sets</a>
+            </div>
+            <div class="mega-featured">
+              <div class="mega-feat-card">
+                <div class="mega-feat-img">🌹</div>
+                <p>New Arrival</p>
+                <strong>Rose Elixir Collection</strong>
+                <a href="#shop" class="mega-cta">Shop Now →</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#bestsellers">Bestsellers</a></li>
+        <li><a href="#ritual">Ritual</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="nav-brand">LUMIÈRE</div>
+    <div class="nav-actions">
+      <button class="btn-icon" id="searchTrigger" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="btn-icon" id="wishlistToggleBtn" aria-label="Wishlist">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="badge wishlist-badge" id="wishlistBadge" style="display:none">0</span>
+      </button>
+      <button class="btn-icon" id="cartTrigger" aria-label="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="badge cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mob-header">
+      <span class="mob-brand">LUMIÈRE</span>
+      <button class="mob-close" id="mobClose">✕</button>
+    </div>
+    <nav class="mob-nav">
+      <a href="#shop">Shop All</a>
+      <a href="#shop" data-cat="skincare">Skincare</a>
+      <a href="#shop" data-cat="lips">Lips</a>
+      <a href="#shop" data-cat="eyes">Eyes</a>
+      <a href="#shop" data-cat="body">Body</a>
+      <a href="#bestsellers">Bestsellers</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="mob-footer"><p>Free shipping on orders over $75</p></div>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" id="searchClose">✕</button>
+    <div class="search-inner">
+      <h3>What are you looking for?</h3>
+      <div class="search-bar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Search serums, moisturizers…" autocomplete="off"/>
+      </div>
+      <div class="search-tags">
+        <span class="search-tag" data-cat="skincare">Skincare</span>
+        <span class="search-tag" data-cat="lips">Lips</span>
+        <span class="search-tag" data-cat="eyes">Eyes</span>
+        <span class="search-tag">Bestsellers</span>
+        <span class="search-tag">Gift Sets</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" data-slide="0">
+        <div class="hero-content">
+          <p class="hero-eyebrow reveal-up">New Season · Spring 2025</p>
+          <h1 class="hero-title reveal-up"><span class="line">Beauty</span><span class="line italic">Elevated</span><span class="line">By Nature</span></h1>
+          <p class="hero-sub reveal-up">Science-backed. Soul-crafted. Yours.</p>
+          <div class="hero-cta reveal-up">
+            <a href="#shop" class="btn-primary magnetic">Shop Collection</a>
+            <a href="#ritual" class="btn-ghost magnetic">Our Ritual</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <div class="hero-content">
+          <p class="hero-eyebrow reveal-up">Exclusive Drop</p>
+          <h1 class="hero-title reveal-up"><span class="line">Rose</span><span class="line italic">Elixir</span><span class="line">Collection</span></h1>
+          <p class="hero-sub reveal-up">Distilled from 1000 Damascene roses.</p>
+          <div class="hero-cta reveal-up"><a href="#shop" class="btn-primary magnetic">Discover Now</a></div>
+        </div>
+      </div>
+      <div class="hero-slide" data-slide="2">
+        <div class="hero-content">
+          <p class="hero-eyebrow reveal-up">Limited Edition</p>
+          <h1 class="hero-title reveal-up"><span class="line">Gold</span><span class="line italic">Ritual</span><span class="line">Set</span></h1>
+          <p class="hero-sub reveal-up">The ultimate luxury gifting experience.</p>
+          <div class="hero-cta reveal-up"><a href="#shop" class="btn-primary magnetic">Shop Gifts</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-nav">
+      <button class="hero-nav-btn" id="heroPrev">‹</button>
+      <div class="hero-dots" id="heroDots">
+        <span class="hero-dot active"></span><span class="hero-dot"></span><span class="hero-dot"></span>
+      </div>
+      <button class="hero-nav-btn" id="heroNext">›</button>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+    <div class="float-card float-card-1">
+      <div class="float-dot"></div>
+      <div><span class="fc-label">Trending</span><span class="fc-name">Glow Serum</span></div>
+      <span class="fc-price">$68</span>
+    </div>
+    <div class="float-card float-card-2">
+      <div class="float-dot"></div>
+      <div><span class="fc-label">New Drop</span><span class="fc-name">Rose Elixir</span></div>
+      <span class="fc-price">$84</span>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Radiance</span><span class="dot">✦</span><span>Luminosity</span><span class="dot">✦</span>
+      <span>Natural Beauty</span><span class="dot">✦</span><span>Pure Luxury</span><span class="dot">✦</span>
+      <span>Botanical Science</span><span class="dot">✦</span><span>Free Shipping $75+</span><span class="dot">✦</span>
+      <span>Radiance</span><span class="dot">✦</span><span>Luminosity</span><span class="dot">✦</span>
+      <span>Natural Beauty</span><span class="dot">✦</span><span>Pure Luxury</span><span class="dot">✦</span>
+      <span>Botanical Science</span><span class="dot">✦</span><span>Free Shipping $75+</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- Category Pills -->
+  <section class="categories-bar" id="categoriesBar">
+    <div class="container">
+      <div class="cat-pills">
+        <button class="cat-pill active" data-cat="all">All Products</button>
+        <button class="cat-pill" data-cat="skincare">✿ Skincare</button>
+        <button class="cat-pill" data-cat="lips">💄 Lips</button>
+        <button class="cat-pill" data-cat="eyes">✨ Eyes</button>
+        <button class="cat-pill" data-cat="body">🌸 Body</button>
+        <button class="cat-pill" data-cat="fragrance">🌹 Fragrance</button>
+        <button class="cat-pill" data-cat="sets">🎁 Gift Sets</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section class="shop" id="shop">
+    <div class="container">
+      <div class="shop-header">
+        <div class="shop-title-block">
+          <p class="section-tag reveal-up">— Shop the Collection</p>
+          <h2 class="section-title reveal-up" id="shopTitle">All Products</h2>
+          <p class="product-count reveal-up" id="productCount"></p>
+        </div>
+        <div class="shop-controls reveal-up">
+          <select class="filter-select" id="sortSelect">
+            <option value="default">Sort: Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="newest">Newest</option>
+          </select>
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="grid" aria-label="Grid">⊞</button>
+            <button class="view-btn" data-view="list" aria-label="List">☰</button>
+          </div>
+        </div>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+      <div class="load-more-wrap">
+        <button class="btn-ghost load-more-btn" id="loadMoreBtn">Load More Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banner -->
+  <section class="promo-banner">
+    <div class="promo-inner container">
+      <div class="promo-text reveal-up">
+        <p class="section-tag">— Limited Time</p>
+        <h2>Buy 2, Get 1 Free</h2>
+        <p>On all skincare essentials. Use code <strong>GLOW3</strong> at checkout.</p>
+        <a href="#shop" class="btn-primary">Shop the Deal</a>
+      </div>
+      <div class="promo-visual reveal-up">
+        <div class="promo-orb"></div>
+        <div class="promo-emoji">🌿✨💆‍♀️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="bestsellers" id="bestsellers">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag reveal-up">— Most Loved</p>
+        <h2 class="section-title reveal-up">Bestsellers</h2>
+        <p class="section-sub reveal-up">Tried, tested, and adored by thousands.</p>
+      </div>
+      <div class="bestsellers-slider" id="bestsellersSlider"></div>
+      <div class="slider-controls">
+        <button class="testi-btn" id="bsPrev">←</button>
+        <button class="testi-btn" id="bsNext">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ritual -->
+  <section class="ritual" id="ritual">
+    <div class="ritual-bg"><div class="ritual-orb"></div></div>
+    <div class="container ritual-inner">
+      <div class="ritual-text">
+        <p class="section-tag reveal-up">— The Lumière Way</p>
+        <h2 class="section-title reveal-up">A Ritual,<br/><em>Not a Routine</em></h2>
+        <p class="ritual-desc reveal-up">Every product is born from cutting-edge dermoscience and timeless botanical wisdom. We source only the rarest ingredients — wild-harvested rosehip from Patagonia, blue lotus from the Nile delta, Arctic cloudberry.</p>
+        <div class="ritual-steps reveal-up">
+          <div class="rstep"><span class="rstep-num">01</span><div><strong>Cleanse</strong><p>Begin with our botanical micellar water</p></div></div>
+          <div class="rstep"><span class="rstep-num">02</span><div><strong>Treat</strong><p>Apply your targeted serum or elixir</p></div></div>
+          <div class="rstep"><span class="rstep-num">03</span><div><strong>Nourish</strong><p>Seal with our rose petal cream</p></div></div>
+          <div class="rstep"><span class="rstep-num">04</span><div><strong>Protect</strong><p>Finish with our mineral SPF 50 veil</p></div></div>
+        </div>
+        <div class="ritual-stats">
+          <div class="stat reveal-up"><span class="stat-num" data-target="97">0</span><span>%</span><p>Natural</p></div>
+          <div class="stat reveal-up"><span class="stat-num" data-target="50">0</span><span>+</span><p>Botanicals</p></div>
+          <div class="stat reveal-up"><span class="stat-num" data-target="12">0</span><span>K</span><p>Clients</p></div>
+          <div class="stat reveal-up"><span class="stat-num" data-target="8">0</span><span></span><p>Awards</p></div>
+        </div>
+        <a href="#shop" class="btn-primary magnetic reveal-up">Shop the Ritual</a>
+      </div>
+      <div class="ritual-visual reveal-up">
+        <div class="ritual-ring ring-1"></div><div class="ritual-ring ring-2"></div><div class="ritual-ring ring-3"></div>
+        <div class="ritual-center"><span>✦</span></div>
+        <div class="ritual-item ri-1">Rosehip Oil</div>
+        <div class="ritual-item ri-2">Blue Lotus</div>
+        <div class="ritual-item ri-3">Cloudberry</div>
+        <div class="ritual-item ri-4">Argan</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-bar">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature reveal-up"><div class="feat-icon">🚚</div><div><strong>Free Shipping</strong><p>On orders over $75</p></div></div>
+        <div class="feature reveal-up" data-delay="100"><div class="feat-icon">↩</div><div><strong>Easy Returns</strong><p>30-day hassle-free</p></div></div>
+        <div class="feature reveal-up" data-delay="200"><div class="feat-icon">🔒</div><div><strong>Secure Payment</strong><p>256-bit SSL</p></div></div>
+        <div class="feature reveal-up" data-delay="300"><div class="feat-icon">🌿</div><div><strong>Clean Beauty</strong><p>97% natural ingredients</p></div></div>
+        <div class="feature reveal-up" data-delay="400"><div class="feat-icon">🎁</div><div><strong>Gift Wrapping</strong><p>Complimentary on all orders</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-visual reveal-up">
+        <div class="about-img-wrap">
+          <div class="about-orb"></div>
+          <div class="about-img-main"><span class="about-emoji-big">🌸</span></div>
+          <div class="about-badge-float"><span>Est. 2018</span></div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-tag reveal-up">— Our Story</p>
+        <h2 class="section-title reveal-up">Born from a<br/><em>Passion for Purity</em></h2>
+        <p class="about-desc reveal-up">Founded in 2018 in Paris, Lumière was born from a simple belief: luxury beauty should never compromise on integrity. Our founder, Élise Moreau, spent a decade as a research chemist before creating formulas that blend the best of science and nature.</p>
+        <p class="about-desc reveal-up">Every Lumière product is Leaping Bunny certified, sustainably sourced, and produced in our carbon-neutral atelier in Grasse, the perfume capital of the world.</p>
+        <div class="about-pillars reveal-up">
+          <div class="pillar">🐰 <span>Cruelty-Free</span></div>
+          <div class="pillar">♻ <span>Sustainable</span></div>
+          <div class="pillar">🌿 <span>Vegan</span></div>
+          <div class="pillar">🧪 <span>Derm-Tested</span></div>
+        </div>
+        <a href="#shop" class="btn-primary magnetic reveal-up">Explore Our Values</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag reveal-up">— Real Stories</p>
+        <h2 class="section-title reveal-up">Loved by Thousands</h2>
+        <div class="overall-rating reveal-up"><div class="stars-big">★★★★★</div><span>4.9 / 5 from 2,400+ reviews</span></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal-up" data-delay="0"><div class="testi-stars">★★★★★</div><p>"The Glow Serum has completely transformed my skin. I've never felt so confident without makeup. Lumière is pure magic."</p><div class="testi-author"><div class="testi-avatar av1">SC</div><div><strong>Sofia Chen</strong><span>Verified Buyer · New York</span></div></div></div>
+        <div class="testi-card reveal-up" data-delay="100"><div class="testi-stars">★★★★★</div><p>"Nothing compares to the Rose Petal Cream. My skin literally glows every morning. Worth every single penny."</p><div class="testi-author"><div class="testi-avatar av2">MA</div><div><strong>Mia Andersen</strong><span>Beauty Editor · London</span></div></div></div>
+        <div class="testi-card reveal-up" data-delay="200"><div class="testi-stars">★★★★★</div><p>"The botanical ingredients are so thoughtfully chosen. You can feel the quality. My complexion has never been more radiant."</p><div class="testi-author"><div class="testi-avatar av3">PL</div><div><strong>Priya Lal</strong><span>Wellness Coach · Mumbai</span></div></div></div>
+        <div class="testi-card reveal-up" data-delay="300"><div class="testi-stars">★★★★★</div><p>"Fast shipping, beautiful packaging, and the products live up to every promise. Completely obsessed with the Eye Elixir."</p><div class="testi-author"><div class="testi-avatar av4">JK</div><div><strong>Jana K.</strong><span>Verified Buyer · Berlin</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="instagram-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag reveal-up">— @lumiere.beauty</p>
+        <h2 class="section-title reveal-up">Follow the Glow</h2>
+      </div>
+      <div class="insta-grid reveal-up">
+        <div class="insta-tile" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span>🌹</span><div class="insta-hover">View Post</div></div>
+        <div class="insta-tile" style="background:linear-gradient(135deg,#e8f5e2,#c8e6c0)"><span>🌿</span><div class="insta-hover">View Post</div></div>
+        <div class="insta-tile" style="background:linear-gradient(135deg,#ede7f6,#d1c4e9)"><span>✨</span><div class="insta-hover">View Post</div></div>
+        <div class="insta-tile" style="background:linear-gradient(135deg,#fde8e8,#ffc5c5)"><span>💄</span><div class="insta-hover">View Post</div></div>
+        <div class="insta-tile" style="background:linear-gradient(135deg,#fff8e1,#ffe082)"><span>🌟</span><div class="insta-hover">View Post</div></div>
+        <div class="insta-tile" style="background:linear-gradient(135deg,#e0f2f1,#b2dfdb)"><span>💧</span><div class="insta-hover">View Post</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="nl-bg"><div class="nl-orb nl-orb-1"></div><div class="nl-orb nl-orb-2"></div></div>
+    <div class="container">
+      <div class="nl-inner reveal-up">
+        <p class="section-tag">— Stay Radiant</p>
+        <h2>Join the Inner Circle</h2>
+        <p class="nl-sub">Get 10% off your first order, early access to launches, and members-only rituals.</p>
+        <form class="nl-form" id="nlForm">
+          <input type="email" placeholder="Your email address" required/>
+          <button type="submit" class="btn-primary">Get 10% Off</button>
+        </form>
+        <p class="nl-fine">No spam, ever. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">LUMIÈRE</div>
+          <p>Where science meets the sacred art of beauty. Crafted in Paris.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link">Ig</a>
+            <a href="#" class="social-link">Tk</a>
+            <a href="#" class="social-link">Pt</a>
+            <a href="#" class="social-link">Yt</a>
+          </div>
+          <div class="payment-icons">
+            <span class="pay-icon">VISA</span>
+            <span class="pay-icon">MC</span>
+            <span class="pay-icon">AMEX</span>
+            <span class="pay-icon">PayPal</span>
+          </div>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col"><h5>Shop</h5><ul><li><a href="#">New Arrivals</a></li><li><a href="#">Skincare</a></li><li><a href="#">Makeup</a></li><li><a href="#">Fragrance</a></li><li><a href="#">Gift Sets</a></li><li><a href="#">Sale</a></li></ul></div>
+          <div class="footer-col"><h5>Learn</h5><ul><li><a href="#">Our Story</a></li><li><a href="#">Ingredients</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Blog</a></li><li><a href="#">Press</a></li></ul></div>
+          <div class="footer-col"><h5>Help</h5><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Track Order</a></li><li><a href="#">Contact</a></li></ul></div>
+          <div class="footer-col"><h5>Legal</h5><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Accessibility</a></li></ul></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Lumière Beauty. All rights reserved.</p>
+        <p>Crafted with ♡ for radiant souls · Paris, France</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header"><h3>Your Bag <span id="cartCountLabel">(0)</span></h3><button class="cart-close" id="cartClose">✕</button></div>
+    <div class="cart-body" id="cartBody">
+      <div class="cart-empty" id="cartEmpty"><span>🛍️</span><p>Your cart is empty</p><button class="btn-primary" onclick="closeCart();document.getElementById('shop').scrollIntoView()">Start Shopping</button></div>
+      <div class="cart-items" id="cartItems"></div>
+    </div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="cart-shipping-note" id="shippingNote">🚚 Add $75.00 more for free shipping</div>
+      <div class="cart-promo"><input type="text" placeholder="Promo code" id="cartPromoInput"/><button onclick="applyCartPromo()">Apply</button></div>
+      <button class="btn-primary full-width" onclick="openCheckout()">Proceed to Checkout 🔒</button>
+      <button class="btn-ghost full-width" onclick="closeCart()">Continue Shopping</button>
+      <div class="cart-secure">🔒 Secure Checkout · Free Returns · Encrypted</div>
+    </div>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div class="wishlist-drawer" id="wishlistDrawer">
+    <div class="cart-header"><h3>Wishlist <span id="wishlistCountLabel">(0)</span></h3><button class="cart-close" id="wishlistClose">✕</button></div>
+    <div class="cart-body">
+      <div class="cart-empty" id="wishlistEmpty"><span>♡</span><p>Your wishlist is empty</p><button class="btn-primary" onclick="closeWishlist()">Browse Products</button></div>
+      <div class="cart-items" id="wishlistItems"></div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="quick-view-modal" id="quickViewModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="qv-grid">
+        <div class="qv-image" id="qvImage"></div>
+        <div class="qv-info" id="qvInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay checkout-overlay" id="checkoutOverlay" style="display:none">
+    <div class="checkout-modal" id="checkoutModal">
+      <button class="modal-close" id="checkoutClose">✕</button>
+      <div class="checkout-inner">
+        <div class="checkout-steps">
+          <div class="co-step active" data-step="1"><span>1</span>Info</div>
+          <div class="co-step-line"></div>
+          <div class="co-step" data-step="2"><span>2</span>Shipping</div>
+          <div class="co-step-line"></div>
+          <div class="co-step" data-step="3"><span>3</span>Payment</div>
+        </div>
+        <div class="checkout-form" id="checkoutStep1">
+          <h4>Contact &amp; Address</h4>
+          <div class="form-row"><div class="form-group"><label>First Name</label><input type="text" placeholder="Élise"/></div><div class="form-group"><label>Last Name</label><input type="text" placeholder="Moreau"/></div></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="elise@lumiere.com"/></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="+1 555 000 0000"/></div>
+          <div class="form-group"><label>Address</label><input type="text" placeholder="123 Beauty Lane"/></div>
+          <div class="form-row"><div class="form-group"><label>City</label><input type="text" placeholder="Paris"/></div><div class="form-group"><label>ZIP</label><input type="text" placeholder="75001"/></div></div>
+          <div class="form-group"><label>Country</label><select><option>United States</option><option>United Kingdom</option><option>France</option><option>Australia</option><option>Bangladesh</option></select></div>
+          <button class="btn-primary full-width" onclick="checkoutNext(2)">Continue to Shipping →</button>
+        </div>
+        <div class="checkout-form hidden" id="checkoutStep2">
+          <h4>Shipping Method</h4>
+          <div class="shipping-options">
+            <label class="ship-opt active-opt"><input type="radio" name="ship" checked/><div><strong>Standard</strong><p>5–7 business days</p></div><span>Free</span></label>
+            <label class="ship-opt"><input type="radio" name="ship"/><div><strong>Express</strong><p>2–3 business days</p></div><span>$12</span></label>
+            <label class="ship-opt"><input type="radio" name="ship"/><div><strong>Overnight</strong><p>Next business day</p></div><span>$24</span></label>
+          </div>
+          <div class="form-group" style="margin-top:1.5rem"><label>Order Notes (optional)</label><textarea placeholder="Gift message, special instructions…" rows="3"></textarea></div>
+          <div style="display:flex;gap:1rem"><button class="btn-ghost" onclick="checkoutNext(1)">← Back</button><button class="btn-primary" style="flex:1" onclick="checkoutNext(3)">Continue to Payment →</button></div>
+        </div>
+        <div class="checkout-form hidden" id="checkoutStep3">
+          <h4>Payment Details</h4>
+          <div class="form-group"><label>Card Number</label><input type="text" placeholder="4242 4242 4242 4242" maxlength="19" id="cardNum"/></div>
+          <div class="form-row"><div class="form-group"><label>Expiry</label><input type="text" placeholder="MM / YY"/></div><div class="form-group"><label>CVV</label><input type="text" placeholder="123" maxlength="3"/></div></div>
+          <div class="form-group"><label>Name on Card</label><input type="text" placeholder="Élise Moreau"/></div>
+          <div class="promo-row"><input type="text" placeholder="Promo code (e.g. GLOW3)" id="promoInput"/><button class="apply-promo-btn" onclick="applyPromo()">Apply</button></div>
+          <div class="order-summary-mini" id="orderSummaryMini"></div>
+          <div style="display:flex;gap:1rem;margin-top:1rem"><button class="btn-ghost" onclick="checkoutNext(2)">← Back</button><button class="btn-primary" style="flex:1" onclick="placeOrder()">Place Order 🔒</button></div>
+          <p class="secure-note">🔒 256-bit SSL encryption · Payments processed securely</p>
+        </div>
+        <div class="checkout-form hidden" id="checkoutSuccess">
+          <div class="order-success">
+            <div class="success-icon">✓</div>
+            <h3>Order Confirmed!</h3>
+            <p>Thank you for your purchase. A confirmation email is on its way.</p>
+            <p class="order-num">Order #LM-<span id="orderNum"></span></p>
+            <button class="btn-primary" onclick="closeCheckout()">Continue Shopping</button>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-sidebar">
+        <h4>Order Summary</h4>
+        <div class="checkout-cart-items" id="checkoutCartItems"></div>
+        <div class="checkout-totals" id="checkoutTotals"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast & Back to Top -->
+  <div class="toast" id="toast"><span class="toast-icon" id="toastIcon">✓</span><span class="toast-msg" id="toastMsg">Added to cart!</span></div>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
