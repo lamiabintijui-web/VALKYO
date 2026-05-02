@@ -1,6 +1,6 @@
 const express = require('express');
 const Product = require('../models/Product');
-const { protect, admin } = require('../middleware/auth');
+const { protect } = require('../middleware/auth');
 const router = express.Router();
 
 // Get all products
@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Admin: Create product
-router.post('/', protect, admin, async (req, res) => {
+router.post('/', protect, async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res.status(201).json({ success: true, product });
