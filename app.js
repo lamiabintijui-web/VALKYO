@@ -789,6 +789,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTilt();
   initParallax();
   initBsSlider();
+  loadProductsFromDB();
   updateCartUI();
   updateWishlistUI();
 
@@ -823,4 +824,34 @@ async function placeOrder(orderData, token) {
     body: JSON.stringify(orderData)
   });
   return res.json();
+}
+// Load products from database
+async function loadProductsFromDB() {
+  try {
+    const res = await fetch('https://valkyo.onrender.com/api/products?limit=100');
+    const data = await res.json();
+    if (data.success && data.products.length > 0) {
+      PRODUCTS.length = 0;
+      data.products.forEach((p, i) => {
+        PRODUCTS.push({
+          id: i + 1,
+          name: p.name,
+          cat: p.cat,
+          emoji: p.emoji || '✨',
+          price: p.price,
+          oldPrice: p.oldPrice || null,
+          rating: p.rating || 4.5,
+          reviews: p.reviews || 0,
+          badge: p.badge || null,
+          desc: p.desc || p.description || '',
+          sizes: p.sizes || ['One Size'],
+          ingredients: p.ingredients || ''
+        });
+      });
+      renderProducts();
+      renderBestsellers();
+    }
+  } catch(e) {
+    console.log('Using local products');
+  }
 }
