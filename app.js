@@ -295,7 +295,7 @@ function productCardHTML(p) {
         <button class="p-btn ${wishlisted?"wishlisted":""} wishlist-btn" data-id="${p.id}" title="Wishlist">${wishlisted?"♥":"♡"}</button>
         <button class="p-btn quick-view-btn-icon" data-id="${p.id}" title="Quick View">⊕</button>
       </div>
-      <div class="product-emoji">${p.emoji}</div>
+      ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-emoji" style="display:none">${p.emoji}</div>` : `<div class="product-emoji">${p.emoji}</div>`}
       <button class="quick-view-btn" data-id="${p.id}">Quick View</button>
     </div>
     <div class="product-info">
