@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Admin: Create product
-router.post('/', protect, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res.status(201).json({ success: true, product });
