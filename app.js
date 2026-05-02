@@ -177,6 +177,7 @@ function initNav() {
   });
 }
 
+
 /* ════════════════════════════════════════════
    REVEAL ON SCROLL
 ════════════════════════════════════════════ */
@@ -796,3 +797,30 @@ document.addEventListener("DOMContentLoaded", () => {
     a.addEventListener("click", e => { e.preventDefault(); filterProducts(a.dataset.cat); document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" }); });
   });
 });
+
+
+// API Base URL
+const API_BASE = 'http://localhost:5000/api';
+
+// Login/Register
+async function login(email, password) {
+  const res = await fetch(`${API_BASE}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  return res.json();
+}
+
+// Place Order
+async function placeOrder(orderData, token) {
+  const res = await fetch(`${API_BASE}/orders`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(orderData)
+  });
+  return res.json();
+}
